@@ -44,6 +44,7 @@
             this.label1.Size = new System.Drawing.Size(720, 108);
             this.label1.TabIndex = 0;
             this.label1.Text = "Text Goes Here";
+            this.label1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.OnPreviewKeyDown);
             // 
             // timer1
             // 

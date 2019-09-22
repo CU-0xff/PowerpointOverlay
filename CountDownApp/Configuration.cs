@@ -11,6 +11,8 @@ namespace CountDownApp
     {
         public bool IsLoaded = false;
 
+        public bool AutoCenterX { get; set; }
+
         public string FontName { get; set; }
         public float FontSize { get; set; }
 
@@ -25,6 +27,7 @@ namespace CountDownApp
             JObject config = JObject.Parse(@"{
                 'FontName' : 'Microsoft Sans Serif',
                 'FontSize' : 72.0,
+                'AutoCenterX' : 'True',
                 'Location' : { 'X' : 800, 'Y' : 800 },
                 'FontColor': { 'R' : 255, 'G' : 128, 'B' : 0},
                 'Program' : [ 
@@ -45,6 +48,7 @@ namespace CountDownApp
 
             Location = new System.Drawing.Point((int)config.SelectToken("Location.X"), (int)config.SelectToken("Location.Y"));
 
+            AutoCenterX = Boolean.Parse((string)config.SelectToken("AutoCenterX")); 
             JEnumerable<JToken> programTokens = config.SelectToken("Program").Children();
 
             program = new SortedList<DateTime, ProgramEntry>();

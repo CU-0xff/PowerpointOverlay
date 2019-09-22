@@ -35,22 +35,30 @@ namespace CountDownApp
         {
             timer1.Enabled = false;
 
-            if(config.IsLoaded == false ) { timer1.Enabled = true; return; }
+            if (config.IsLoaded == false) { timer1.Enabled = true; return; }
 
-            DateTime nextProgramStart = config.program.Keys.Where(start => start >= DateTime.Now).Min();
+            string newDisplayText = System.DateTime.Now.ToLongTimeString();
 
-            string newDisplayText = "Next: " + config.program[nextProgramStart].Text + " "  + System.DateTime.Now.ToLongTimeString();
+            if (config.program.Keys.Where(start => start >= DateTime.Now).Count() > 0)
+            {
+                DateTime nextProgramStart = config.program.Keys.Where(start => start >= DateTime.Now).Min();
+
+                newDisplayText = "Next: " + config.program[nextProgramStart].Text + " " + newDisplayText;
+            }
+
 
             Size newDisplayTextSize = TextRenderer.MeasureText(newDisplayText, this.label1.Font);
             newDisplayTextSize.Height += 20; newDisplayTextSize.Width += 20;
 
             System.Drawing.Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
 
+            if (config.AutoCenterX) { 
             Point newLocation = this.Location;
-            
+
             newLocation.X = (workingRectangle.Width - newDisplayTextSize.Width) / 2;
 
             this.Location = newLocation;
+            }
 
             this.Size = newDisplayTextSize;
             this.label1.Text = newDisplayText;
@@ -63,6 +71,16 @@ namespace CountDownApp
         {
             timer1.Interval = 1000;
             timer1.Enabled = true;
+        }
+
+        private void OnPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.Enter:
+                    Application.Exit();
+                    break;
+            }
         }
     }
 }
