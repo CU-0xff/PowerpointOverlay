@@ -73,11 +73,11 @@ namespace CountDownApp
             timer1.Enabled = true;
         }
 
-        private void OnPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void OnKeyPress(object sender, KeyPressEventArgs e)
         {
-            switch(e.KeyCode)
+            switch (e.KeyChar)
             {
-                case Keys.Enter:
+                case '\r':
                     Application.Exit();
                     break;
             }
