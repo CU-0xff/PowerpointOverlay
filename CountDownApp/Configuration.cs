@@ -26,9 +26,9 @@ namespace CountDownApp
         {
             JObject config = JObject.Parse(@"{
                 'FontName' : 'Microsoft Sans Serif',
-                'FontSize' : 72.0,
+                'FontSize' : 32.0,
                 'AutoCenterX' : 'True',
-                'Location' : { 'X' : 800, 'Y' : 800 },
+                'Location' : { 'X' : 20, 'Y' : 100 },
                 'FontColor': { 'R' : 255, 'G' : 128, 'B' : 0},
                 'Program' : [ 
                     {'Text' : 'Django Dance - Paulseph',

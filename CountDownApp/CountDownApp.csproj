@@ -60,6 +60,9 @@
     <Compile Include="MarqueeLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MarqueeTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgramEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CountDownApp
 {
-    class Marquee : Label
+    class MarqueeLabel : Label
     {
         public Timer MarqueeTimer { get; set; }
         public int Speed { get; set; }
@@ -21,7 +21,7 @@ namespace CountDownApp
         SolidBrush backBrush;
         SolidBrush textBrush;
 
-        public Marquee()
+        public MarqueeLabel()
         {
             textBrush = new SolidBrush(this.ForeColor);
             backBrush = new SolidBrush(this.BackColor);

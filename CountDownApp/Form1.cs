@@ -29,6 +29,8 @@ namespace CountDownApp
             this.label1.Font = new System.Drawing.Font(this.config.FontName, this.config.FontSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = this.config.FontColor;
 
+            this.marqueeTextbox1.Font = this.label1.Font;
+            this.marqueeTextbox1.Color = this.label1.ForeColor;
         }
 
         private void OnTimerTick(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace CountDownApp
             }
 
 
-            Size newDisplayTextSize = TextRenderer.MeasureText(newDisplayText, this.label1.Font);
+            Size newDisplayTextSize = TextRenderer.MeasureText(newDisplayText, this.marqueeTextbox1.Font);
             newDisplayTextSize.Height += 20; newDisplayTextSize.Width += 20;
 
             System.Drawing.Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
@@ -62,6 +64,9 @@ namespace CountDownApp
 
             this.Size = newDisplayTextSize;
             this.label1.Text = newDisplayText;
+
+            this.marqueeTextbox1.Text = newDisplayText;
+            this.marqueeTextbox1.Size = newDisplayTextSize;
 
             timer1.Enabled = true;
 
@@ -81,6 +86,64 @@ namespace CountDownApp
                     Application.Exit();
                     break;
             }
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            DrawStringRectangleF(e);
+        }
+
+ 
+        //
+
+        //Sample code taken from MSDN help on Graphics.DrawString method
+
+        //
+
+        public void DrawStringRectangleF(PaintEventArgs e)
+
+        {
+
+            // Create string to draw.
+
+            String drawString = "Sample Text";
+
+
+
+            // Create font and brush.
+
+            Font drawFont = new Font("Arial", 16);
+
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+
+
+            // Create rectangle for drawing.
+
+            float x = 50.0F;
+
+            float y = 50.0F;
+
+            float width = 200.0F;
+
+            float height = 50.0F;
+
+
+
+            RectangleF drawRect = new RectangleF(x, y, width, height);
+
+            // Draw rectangle to screen.
+
+            Pen blackPen = new Pen(Color.Black);
+
+
+
+            e.Graphics.DrawRectangle(blackPen, x, y, width, height);
+
+            // Draw string to screen.
+
+            e.Graphics.DrawString(drawString, drawFont, drawBrush, drawRect);
+
         }
     }
 }
