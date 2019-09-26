@@ -31,7 +31,7 @@ namespace CountDownApp
                 'Location' : { 'X' : 20, 'Y' : 100 },
                 'FontColor': { 'R' : 255, 'G' : 128, 'B' : 0},
                 'Program' : [ 
-                    {'Text' : 'Django Dance - Paulseph',
+                    {'Text' : 'Django Dance and Limbo Mumbo Jitter Ditter Hango Dango Plumbo Mumbo Django Dance and Limbo Mumbo Jitter Ditter Hango Dango Plumbo Mumbo - Paulseph',
                      'TimeStart' : '7:25 PM',
                      'TimeEnd' : '8:00 PM'},
                     {'Text' : 'Mumbay Libretto - Hayley',

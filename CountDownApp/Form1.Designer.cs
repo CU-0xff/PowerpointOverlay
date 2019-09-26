@@ -62,7 +62,7 @@
             this.marqueeTextbox1.Speed = 1;
             this.marqueeTextbox1.TabIndex = 1;
             this.marqueeTextbox1.TabStop = false;
-            this.marqueeTextbox1.yOffset = 0;
+
             // 
             // Form1
             // 

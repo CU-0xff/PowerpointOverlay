@@ -54,19 +54,31 @@ namespace CountDownApp
 
             System.Drawing.Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
 
-            if (config.AutoCenterX) { 
-            Point newLocation = this.Location;
 
-            newLocation.X = (workingRectangle.Width - newDisplayTextSize.Width) / 2;
+            var thisSize = this.Size;
 
-            this.Location = newLocation;
-            }
+            if (Screen.PrimaryScreen.WorkingArea.Width - 10 < newDisplayTextSize.Width) {
+                thisSize.Width = Screen.PrimaryScreen.WorkingArea.Width - 10;
+                thisSize.Height = newDisplayTextSize.Height;
+               
+            } else
+                thisSize = newDisplayTextSize;
 
-            this.Size = newDisplayTextSize;
+            this.Size = thisSize;
+
             this.label1.Text = newDisplayText;
 
             this.marqueeTextbox1.Text = newDisplayText;
-            this.marqueeTextbox1.Size = newDisplayTextSize;
+            this.marqueeTextbox1.Size = thisSize;
+
+            if (config.AutoCenterX)
+            {
+                Point newLocation = this.Location;
+
+                newLocation.X = (workingRectangle.Width - thisSize.Width) / 2;
+
+                this.Location = newLocation;
+            }
 
             timer1.Enabled = true;
 

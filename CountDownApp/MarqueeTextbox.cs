@@ -14,15 +14,25 @@ namespace CountDownApp
         private Timer MarqueeTimer;
         public int Speed { get; set; }
 
+        private string _Text;
+        public string Text
+        {
+            set { this._Text = value; this.displayTextSize = TextRenderer.MeasureText(value, this.Font); }
+            get { return this._Text; }
+        }
         public Color Color { get; set; }
 
         public void Start() { MarqueeTimer.Start(); }
         public void Stop() { MarqueeTimer.Stop(); }
 
         private int offset;
+        private Size displayTextSize; 
 
         public MarqueeTextbox()
         {
+            this.Font = SystemFonts.DefaultFont;
+
+            displayTextSize = this.Size;
 
             Speed = 1;
             MarqueeTimer = new Timer();
@@ -31,7 +41,7 @@ namespace CountDownApp
             MarqueeTimer.Tick += (aSender, eArgs) =>
             {
                 offset = (offset - Speed);
-                if (offset < -this.ClientSize.Width) offset = 0;
+                if (offset < -this.displayTextSize.Width) offset = 0;
                 this.Invalidate();
             };
         }
@@ -57,7 +67,7 @@ namespace CountDownApp
             // Draw string to screen.
             e.Graphics.DrawString(this.Text, this.Font, drawBrush, offset, 0);
             e.Graphics.DrawString(this.Text, this.Font, drawBrush,
-                                 this.ClientSize.Width + offset, 0);
+                                 this.displayTextSize.Width + offset, 0);
 
 
         }
