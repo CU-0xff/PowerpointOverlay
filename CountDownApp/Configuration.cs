@@ -22,6 +22,11 @@ namespace CountDownApp
 
         public SortedList<DateTime, ProgramEntry> program { get; set; }
         
+        public Configuration ShallowCopy()
+        {
+            return (Configuration)this.MemberwiseClone();
+        }
+
         public void ParseJSON(JObject raw_config)
         {
             JObject config = JObject.Parse(@"{

@@ -16,7 +16,7 @@ namespace CountDownApp
         public int Speed { get; set; }
 
         private string _Text;
-        public string Text
+        public new string  Text
         {
             set { this._Text = value; this.displayTextSize = TextRenderer.MeasureText(value, this.Font); this.Distance = TextRenderer.MeasureText(DISTANCETEXTSIZE, this.Font).Width; }
             get { return this._Text; }

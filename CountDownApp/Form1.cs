@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -92,10 +93,27 @@ namespace CountDownApp
                 case '\r':
                     Application.Exit();
                     break;
+
+                case ' ':
+                    ShowConfigForm();
+                    break;
             }
         }
 
 
-  
+        private void ShowConfigForm() { 
+
+            Configuration dummy_config = config.ShallowCopy();
+
+            ConfigForm frm = new ConfigForm(dummy_config);
+
+            DialogResult result = frm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                config = frm.Config;
+                //Activate config
+            }
+        }
     }
 }
