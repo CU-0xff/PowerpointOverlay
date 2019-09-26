@@ -10,6 +10,7 @@ namespace CountDownApp
 {
     class MarqueeTextbox : PictureBox
     {
+        const string DISTANCETEXTSIZE = "  ";
 
         private Timer MarqueeTimer;
         public int Speed { get; set; }
@@ -17,7 +18,7 @@ namespace CountDownApp
         private string _Text;
         public string Text
         {
-            set { this._Text = value; this.displayTextSize = TextRenderer.MeasureText(value, this.Font); }
+            set { this._Text = value; this.displayTextSize = TextRenderer.MeasureText(value, this.Font); this.Distance = TextRenderer.MeasureText(DISTANCETEXTSIZE, this.Font).Width; }
             get { return this._Text; }
         }
         public Color Color { get; set; }
@@ -26,7 +27,8 @@ namespace CountDownApp
         public void Stop() { MarqueeTimer.Stop(); }
 
         private int offset;
-        private Size displayTextSize; 
+        private Size displayTextSize;
+        private int Distance;
 
         public MarqueeTextbox()
         {
@@ -34,7 +36,7 @@ namespace CountDownApp
 
             displayTextSize = this.Size;
 
-            Speed = 1;
+            Speed = 5;
             MarqueeTimer = new Timer();
             MarqueeTimer.Interval = 25;
             MarqueeTimer.Enabled = true;
@@ -67,7 +69,7 @@ namespace CountDownApp
             // Draw string to screen.
             e.Graphics.DrawString(this.Text, this.Font, drawBrush, offset, 0);
             e.Graphics.DrawString(this.Text, this.Font, drawBrush,
-                                 this.displayTextSize.Width + offset, 0);
+                                 this.displayTextSize.Width + Distance + offset, 0);
 
 
         }
