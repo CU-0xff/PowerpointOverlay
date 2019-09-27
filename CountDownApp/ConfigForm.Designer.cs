@@ -35,16 +35,18 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.btnColor = new System.Windows.Forms.Button();
+            this.txbMarqueeSpeed = new System.Windows.Forms.TextBox();
+            this.lblMarqueeSpeed = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblFont
             // 
             this.lblFont.AutoSize = true;
-            this.lblFont.Location = new System.Drawing.Point(134, 56);
+            this.lblFont.Location = new System.Drawing.Point(233, 74);
             this.lblFont.Name = "lblFont";
-            this.lblFont.Size = new System.Drawing.Size(46, 17);
+            this.lblFont.Size = new System.Drawing.Size(288, 17);
             this.lblFont.TabIndex = 0;
-            this.lblFont.Text = "label1";
+            this.lblFont.Text = "The quick brown fox jumps over the lazy dog";
             // 
             // btnChooseFont
             // 
@@ -86,11 +88,30 @@
             this.btnColor.UseVisualStyleBackColor = true;
             this.btnColor.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txbMarqueeSpeed
+            // 
+            this.txbMarqueeSpeed.Location = new System.Drawing.Point(133, 274);
+            this.txbMarqueeSpeed.Name = "txbMarqueeSpeed";
+            this.txbMarqueeSpeed.Size = new System.Drawing.Size(104, 22);
+            this.txbMarqueeSpeed.TabIndex = 5;
+            this.txbMarqueeSpeed.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidating);
+            // 
+            // lblMarqueeSpeed
+            // 
+            this.lblMarqueeSpeed.AutoSize = true;
+            this.lblMarqueeSpeed.Location = new System.Drawing.Point(22, 274);
+            this.lblMarqueeSpeed.Name = "lblMarqueeSpeed";
+            this.lblMarqueeSpeed.Size = new System.Drawing.Size(105, 17);
+            this.lblMarqueeSpeed.TabIndex = 6;
+            this.lblMarqueeSpeed.Text = "MarqueeSpeed";
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblMarqueeSpeed);
+            this.Controls.Add(this.txbMarqueeSpeed);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
@@ -112,5 +133,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button btnColor;
+        private System.Windows.Forms.TextBox txbMarqueeSpeed;
+        private System.Windows.Forms.Label lblMarqueeSpeed;
     }
 }

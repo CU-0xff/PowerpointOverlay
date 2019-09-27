@@ -21,14 +21,21 @@ namespace CountDownApp
         public void SetConfig(Configuration myConfig)
         {
             config = myConfig;
+            ApplyConfig();
         }
 
         private void onLoad(object sender, EventArgs e)
         {
-            this.Location = this.config.Location;
 
+            ApplyConfig();
+        }
+
+        private void ApplyConfig() { 
             this.marqueeTextbox1.Font = new System.Drawing.Font(this.config.FontName, this.config.FontSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.marqueeTextbox1.Color = this.config.FontColor;
+            this.marqueeTextbox1.Speed = this.config.MarqueeSpeed;
+
+            this.Location = this.config.Location;
         }
 
         private void OnTimerTick(object sender, EventArgs e)
@@ -111,8 +118,7 @@ namespace CountDownApp
 
             if (result == DialogResult.OK)
             {
-                config = frm.Config;
-                //Activate config
+                SetConfig(frm.Config);
             }
         }
     }

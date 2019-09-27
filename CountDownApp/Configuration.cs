@@ -11,6 +11,7 @@ namespace CountDownApp
     {
         public bool IsLoaded = false;
 
+        public int MarqueeSpeed { get; set; }
         public bool AutoCenterX { get; set; }
 
         public string FontName { get; set; }
@@ -35,6 +36,7 @@ namespace CountDownApp
                 'AutoCenterX' : 'True',
                 'Location' : { 'X' : 20, 'Y' : 100 },
                 'FontColor': { 'R' : 255, 'G' : 128, 'B' : 0},
+                'MarqueeSpeed' : '5',
                 'Program' : [ 
                     {'Text' : 'Django Dance and Limbo Mumbo Jitter Ditter Hango Dango Plumbo Mumbo Django Dance and Limbo Mumbo Jitter Ditter Hango Dango Plumbo Mumbo - Paulseph',
                      'TimeStart' : '7:25 PM',
@@ -47,6 +49,7 @@ namespace CountDownApp
                      'TimeEnd' : '10:00 PM'}]
              }");
 
+            MarqueeSpeed = (int)config.SelectToken("MarqueeSpeed");
             FontName = (string)config.SelectToken("FontName");
             FontSize = (float)config.SelectToken("FontSize");
             FontColor = System.Drawing.Color.FromArgb((int)config.SelectToken("FontColor.R"), (int)config.SelectToken("FontColor.G"), (int)config.SelectToken("FontColor.B"));
