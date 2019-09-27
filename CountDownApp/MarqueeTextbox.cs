@@ -10,7 +10,7 @@ namespace CountDownApp
 {
     class MarqueeTextbox : PictureBox
     {
-        const string DISTANCETEXTSIZE = "  ";
+        const string DISTANCETEXTSIZE = "AAA";
 
         private Timer MarqueeTimer;
         public int Speed { get; set; }
